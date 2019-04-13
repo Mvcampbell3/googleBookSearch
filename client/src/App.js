@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import Header from "./components/Header"
 import SearchBar from "./components/SearchBar"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import SearchResultArea from "./components/SearchResultArea";
+
+
+
+import './App.css';
 import API from "./utils/API"
 
 class App extends Component {
@@ -10,7 +15,8 @@ class App extends Component {
     searchTerm: "title",
     title: "",
     author: "",
-    searchResult: {}
+    searchResult: {},
+    searched: false
   }
 
   changeSearchTerm = (e) => {
@@ -34,7 +40,14 @@ class App extends Component {
       API.searchTitle(this.state.title)
         .then(res => {
           console.log(res.data)
-          this.setState({searchResult: res.data})
+          this.setState({searchResult: res.data, searched: true})
+        })
+        .catch(err => console.log(err));
+    } else {
+      API.searchAuthor(this.state.author)
+        .then(res => {
+          console.log(res.data);
+          this.setState({searchResult: res.data, searched: true})
         })
         .catch(err => console.log(err));
     }
@@ -56,7 +69,10 @@ class App extends Component {
                 searchTerm={this.state.searchTerm}
                 search={this.search}
                 />
-                
+              <SearchResultArea 
+                searchResult={this.state.searchResult}
+                searched={this.state.searched}
+              />
             </div>
           )} />
         </Switch>

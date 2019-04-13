@@ -1,0 +1,24 @@
+.searchResult{
+  margin-bottom: 2em;
+  background-color: grey;
+  padding: 10px 20px;
+}
+
+.resultFlex{
+  display: flex;
+  align-items: flex-start;
+}
+
+.resultFlex img{
+  margin-right: 30px;
+}
+
+.searchResult h3{
+  font-size: 24px;
+  text-align: center;
+}
+
+.description{
+  text-indent: 20px;
+  font-size: 18px;
+}
