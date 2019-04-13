@@ -1,0 +1,41 @@
+form{
+  background-color: gray;
+  padding: 30px 40px 40px 40px;
+}
+
+.searchGroup{
+  width: 90%;
+  display: flex;
+  margin: auto;
+}
+
+.searchInput{
+  width: 90%;
+  padding: 12px;
+  font-size: 20px;
+}
+
+.searchBtn{
+  font-size: 18px;
+  background-color: white;
+  border: .5px black solid;
+  outline: none;
+}
+
+.buttonArea{
+  width: 90%;
+  margin: auto;
+}
+
+.typeBtn{
+  font-size: 18px;
+  background-color: white;
+  border: .5px black solid;
+  outline: none;
+  padding: 5px;
+}
+
+.active{
+  background-color: black;
+  color: white
+}
