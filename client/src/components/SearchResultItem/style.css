@@ -1,24 +1,55 @@
 .searchResult{
   margin-bottom: 2em;
-  background-color: grey;
   padding: 10px 20px;
+  background-color: whitesmoke;
+  border: .5px red solid;
+  border-radius: 15px;
+}
+.titleArea{
+  padding: 10px 40px;
+}
+
+.bookTitle{
+  font-size: 28px;
+}
+
+.bookAuthor{
+  text-indent: 20px;
+  margin-top: 1em;
+  color: #333;
 }
 
 .resultFlex{
+  margin-top: 2em;
   display: flex;
   align-items: flex-start;
+}
+
+.resultFlex img{
+  outline: 1px black solid;
 }
 
 .resultFlex img{
   margin-right: 30px;
 }
 
-.searchResult h3{
-  font-size: 24px;
-  text-align: center;
+.desTitle{
+  margin-bottom: 1em;
+  text-decoration: underline;
 }
 
 .description{
   text-indent: 20px;
   font-size: 18px;
+}
+
+.saveBtn{
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: lightcyan;
+  color: black;
+  outline: none;
+  display: block;
+  margin: auto;
+  border: 1px black solid;
 }

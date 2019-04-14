@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Header"
 import SearchBar from "./components/SearchBar"
 import SearchResultArea from "./components/SearchResultArea";
-
-
+import ErrorPage from "./components/ErrorPage";
+import SaveResultArea from "./components/SaveResultArea"
 
 import './App.css';
 import API from "./utils/API"
@@ -16,7 +16,21 @@ class App extends Component {
     title: "",
     author: "",
     searchResult: {},
-    searched: false
+    searched: false,
+    saved: []
+  }
+
+  componentDidMount() {
+    this.getSavedBooks()
+  }
+
+  getSavedBooks = () => {
+    API.getSavedBooks()
+      .then(res => {
+        // console.log(res.data);
+        return this.setState({ saved: res.data })
+      })
+      .catch(err => console.log(err));
   }
 
   changeSearchTerm = (e) => {
@@ -36,21 +50,30 @@ class App extends Component {
 
   search = (e) => {
     e.preventDefault();
-    if (this.state.searchTerm === "title"){
+    if (this.state.searchTerm === "title") {
       API.searchTitle(this.state.title)
         .then(res => {
           console.log(res.data)
-          this.setState({searchResult: res.data, searched: true})
+          this.setState({ searchResult: res.data, searched: true })
         })
         .catch(err => console.log(err));
     } else {
       API.searchAuthor(this.state.author)
         .then(res => {
           console.log(res.data);
-          this.setState({searchResult: res.data, searched: true})
+          this.setState({ searchResult: res.data, searched: true })
         })
         .catch(err => console.log(err));
     }
+  }
+
+  save = (e) => {
+    e.preventDefault();
+    const {title, author, description, img} = e.target.dataset;
+    // console.log(title, author, description, img)
+    API.saveBook(title, author, description, img)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -68,13 +91,24 @@ class App extends Component {
                 handleInputChange={this.handleInputChange}
                 searchTerm={this.state.searchTerm}
                 search={this.search}
-                />
-              <SearchResultArea 
+              />
+              <SearchResultArea
                 searchResult={this.state.searchResult}
                 searched={this.state.searched}
+                save={this.save}
               />
             </div>
           )} />
+          <Route exact path="/saved" render={props => (
+            <div className="container">
+              <SaveResultArea 
+                saved={this.state.saved}
+                getSavedBooks={this.getSavedBooks}
+              />
+            </div>
+          )} />
+
+          <Route component={ErrorPage} />
         </Switch>
       </Router>
     );

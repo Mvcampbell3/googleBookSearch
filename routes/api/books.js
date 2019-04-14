@@ -14,7 +14,9 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const newBook = new Book({
     title: req.body.title,
-    author: req.body.author
+    author: req.body.author,
+    description: req.body.description,
+    img_url: req.body.img_url
   });
 
   newBook.save()
