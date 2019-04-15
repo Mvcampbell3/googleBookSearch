@@ -17,7 +17,8 @@ class App extends Component {
     author: "",
     searchResult: {},
     searched: false,
-    saved: []
+    saved: [],
+    bookIDs: [],
   }
 
   componentDidMount() {
@@ -27,8 +28,9 @@ class App extends Component {
   getSavedBooks = () => {
     API.getSavedBooks()
       .then(res => {
-        // console.log(res.data);
-        return this.setState({ saved: res.data })
+        console.log(res.data);
+        const bookIDs = res.data.map(book => book.bookID)
+        return this.setState({ saved: res.data , bookIDs: bookIDs})
       })
       .catch(err => console.log(err));
   }
@@ -54,6 +56,8 @@ class App extends Component {
       API.searchTitle(this.state.title)
         .then(res => {
           console.log(res.data)
+          const bookIDs = res.data.items.map(book => book.id);
+          console.log(bookIDs);
           this.setState({ searchResult: res.data, searched: true })
         })
         .catch(err => console.log(err));
@@ -69,10 +73,13 @@ class App extends Component {
 
   save = (e) => {
     e.preventDefault();
-    const {title, author, description, img} = e.target.dataset;
+    const {title, author, description, img, bookid} = e.target.dataset;
     // console.log(title, author, description, img)
-    API.saveBook(title, author, description, img)
-      .then(res => console.log(res))
+    API.saveBook(title, author, description, img, bookid)
+      .then(res => {
+        console.log(res);
+        this.getSavedBooks()
+      })
       .catch(err => console.log(err));
   }
 
@@ -122,6 +129,7 @@ class App extends Component {
                 searchResult={this.state.searchResult}
                 searched={this.state.searched}
                 save={this.save}
+                bookIDs={this.state.bookIDs}
               />
             </div>
           )} />

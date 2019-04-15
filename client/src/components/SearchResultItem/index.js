@@ -19,16 +19,21 @@ const SearchResultItem = (props) => {
 
         </div>
       </div>
-      <button
+      {props.bookIDs.indexOf(props.book.id) < 0 ? (
+        <button
         data-title={title}
         data-author={realAuthors}
         data-description={description}
         data-img={props.book.volumeInfo.imageLinks.thumbnail}
+        data-bookid ={props.book.id}
         className="saveBtn"
         onClick={(e) => {
           props.save(e)
         }}
-      >Save</button>
+      >{props.bookIDs.indexOf(props.book.id) < 0 ? "Save":"Already Saved"}</button>
+      ):(
+        <button className="saveBtn">Already Saved</button>
+      )}
     </div>
   )
 }

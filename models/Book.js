@@ -22,6 +22,11 @@ const BookSchema = new Schema({
     required: true
   },
 
+  bookID: {
+    type: String,
+    required: true
+  },
+
   date: {
     type: Date,
     default: Date.now

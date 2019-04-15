@@ -11,6 +11,7 @@ const SearchResultArea = (props) => {
             book={book}
             key={book.id}
             save={props.save}
+            bookIDs={props.bookIDs}
           />
         ))}
       </div>) : (<div></div>)
