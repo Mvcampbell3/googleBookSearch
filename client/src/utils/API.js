@@ -30,5 +30,16 @@ export default {
       img_url: img_url
     }
     return Axios.post("/api/books", sendObj)
+  },
+
+  changeRead(id, newRead) {
+    const updateData = {
+      read: newRead
+    }
+    return Axios.put(`api/books/${id}`, updateData)
+  },
+
+  deleteBook(id) {
+    return Axios.delete(`api/books/${id}`)
   }
 }

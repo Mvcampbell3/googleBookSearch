@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./style.css";
 
+import SaveResultItem from "../SaveResultItem";
+
 class SaveResultArea extends Component {
 
   componentWillMount() {
@@ -14,7 +16,12 @@ class SaveResultArea extends Component {
         {this.props.saved.length ?
           (<div className="SaveResultArea">
             {this.props.saved.map(book => (
-              <h2 key={book._id}>{book.title}</h2>
+              <SaveResultItem 
+              key={book._id} 
+              book={book}
+              changeRead={this.props.changeRead}
+              deleteBook={this.props.deleteBook}
+              />
             ))}
           </div>) :
           (<div>

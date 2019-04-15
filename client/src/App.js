@@ -76,6 +76,32 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
+  changeRead = (e) => {
+    e.preventDefault();
+    const {read, id} = e.target.dataset;
+    console.log(read, !read, id)
+    console.log(typeof read)
+    const newRead = read ==="true"? false: true;
+    API.changeRead(id, newRead)
+      .then(res => {
+        console.log(res);
+        this.getSavedBooks();
+
+      })
+      .catch(err => console.log(err))
+  }
+
+  deleteBook = (e) => {
+    e.preventDefault();
+    const id = e.target.dataset.id;
+    API.deleteBook(id)
+      .then(res => {
+        console.log(res);
+        this.getSavedBooks()
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <Router>
@@ -104,6 +130,8 @@ class App extends Component {
               <SaveResultArea 
                 saved={this.state.saved}
                 getSavedBooks={this.getSavedBooks}
+                changeRead={this.changeRead}
+                deleteBook={this.deleteBook}
               />
             </div>
           )} />

@@ -36,4 +36,16 @@ router.delete("/:id", (req, res) => {
     .catch(err => res.status(404).json({ error: err }))
 })
 
+router.put("/:id", (req, res) => {
+  Book.findByIdAndUpdate({_id: req.params.id}, req.body)
+    .then(result => {
+      if (result === null) {
+        res.status(404).json({ msg: "Book Id was invalid" })
+      } else {
+        res.json(result)
+      }
+    })
+    .catch(err => res.status(404).json({ error: err }))
+})
+
 module.exports = router;
