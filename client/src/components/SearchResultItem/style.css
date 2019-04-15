@@ -5,8 +5,13 @@
   border: .5px red solid;
   border-radius: 15px;
 }
+
 .titleArea{
-  padding: 10px 40px;
+  padding: 10px;
+  display: flex;
+  align-items: baseline;
+  border-bottom: .5px red solid;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .bookTitle{
@@ -15,14 +20,16 @@
 
 .bookAuthor{
   text-indent: 20px;
-  margin-top: 1em;
-  color: #333;
+  color: #444;
 }
 
 .resultFlex{
   margin-top: 2em;
+  padding: 10px 40px;
   display: flex;
   align-items: flex-start;
+  font-family: 'Lora', serif;
+  line-height: 1.5;
 }
 
 .resultFlex img{
@@ -46,7 +53,7 @@
 .saveBtn{
   padding: 10px 15px;
   font-size: 16px;
-  background-color: lightcyan;
+  background-color: whitesmoke;
   color: black;
   outline: none;
   display: block;
@@ -60,8 +67,18 @@
   transition: all, .25s;
 }
 
-.saveBtn:active{
+.wasSaved, .saveBtn:active{
   transform: scale(.95);
   background-color: #490202;
   transition: all, .25s;
+  color: whitesmoke;
+}
+
+.inline{
+  display: inline-block;
+}
+
+.saveBtnArea{
+  width: fit-content;
+  margin: auto;
 }

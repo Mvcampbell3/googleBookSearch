@@ -24,7 +24,7 @@ class SaveResultArea extends Component {
               />
             ))}
           </div>) :
-          (<div>
+          (<div className="banner">
             <h2>Please Add some Books to your Saved Collection!</h2>
           </div>)
         }

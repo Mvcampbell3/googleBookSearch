@@ -20,8 +20,8 @@ const SaveResultItem = (props) => {
       </div>
 
       <div className="saveBtnArea">
-        <button onClick={props.changeRead} data-read={read} data-id={_id}className="savedBtn">{read ? "Make as Unread": "Make as Read"}</button>
-        <button data-id={_id} onClick={props.deleteBook} className="savedBtn">Delete</button>
+        <button onClick={props.changeRead} data-read={read} data-id={_id}className="saveBtn inline">{read ? "Make as Unread": "Make as Read"}</button>
+        <button data-id={_id} onClick={props.deleteBook} className="saveBtn inline">Delete</button>
       </div>
       
     </div>

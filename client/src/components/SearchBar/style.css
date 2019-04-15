@@ -1,5 +1,6 @@
 .searchBar{
   margin-bottom: 2em;
+
 }
 
 form{
@@ -16,9 +17,11 @@ form{
 }
 
 .searchInput{
-  width: 90%;
+  width: 95%;
   padding: 12px;
   font-size: 20px;
+  font-family: 'Ubuntu', sans-serif;
+
 }
 
 .searchBtn{
@@ -26,6 +29,8 @@ form{
   background-color: white;
   border: .5px black solid;
   outline: none;
+  font-family: 'Ubuntu', sans-serif;
+
 }
 
 .buttonArea{
@@ -40,6 +45,8 @@ form{
   border: .5px black solid;
   outline: none;
   padding: 5px;
+  font-family: 'Ubuntu', sans-serif;
+
 }
 
 .active{

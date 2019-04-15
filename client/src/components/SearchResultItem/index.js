@@ -3,7 +3,10 @@ import "./style.css";
 
 const SearchResultItem = (props) => {
   const { title, authors, description } = props.book.volumeInfo
+  const backup = "https://via.placeholder.com/128x231?text=Missing+Img+Url";
+  const imgThumb = props.book.volumeInfo.imageLinks !== undefined ? props.book.volumeInfo.imageLinks.thumbnail : backup;
   const realAuthors = authors ? authors.toString().split(",").join(", ") : "Not Listed";
+  
   return (
     <div className="searchResult">
       <div className="titleArea">
@@ -12,7 +15,7 @@ const SearchResultItem = (props) => {
       </div>
 
       <div className="resultFlex">
-        <img src={props.book.volumeInfo.imageLinks.thumbnail} alt={title}></img>
+        <img src={imgThumb} alt={title}></img>
         <div>
           <h3 className="desTitle">Description</h3>
           <p className="description">{description}</p>
@@ -24,7 +27,7 @@ const SearchResultItem = (props) => {
         data-title={title}
         data-author={realAuthors}
         data-description={description}
-        data-img={props.book.volumeInfo.imageLinks.thumbnail}
+        data-img={imgThumb}
         data-bookid ={props.book.id}
         className="saveBtn"
         onClick={(e) => {
@@ -32,7 +35,7 @@ const SearchResultItem = (props) => {
         }}
       >{props.bookIDs.indexOf(props.book.id) < 0 ? "Save":"Already Saved"}</button>
       ):(
-        <button className="saveBtn">Already Saved</button>
+        <button className="saveBtn wasSaved">Already Saved</button>
       )}
     </div>
   )
