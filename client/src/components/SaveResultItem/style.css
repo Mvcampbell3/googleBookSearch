@@ -1,0 +1,18 @@
+.link-off{
+  padding: 5px;
+  color: black;
+  text-decoration: none;
+  border: .5px red solid;
+  margin-top: 1em;
+  display: block;
+  width: fit-content;
+  transition: all, .25s;
+
+}
+
+.link-off:hover{
+  border-radius: 15px;
+  background-color: #490202;
+  color: whitesmoke;
+  transition: all, .25s;
+}

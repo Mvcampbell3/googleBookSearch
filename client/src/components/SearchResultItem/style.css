@@ -69,9 +69,10 @@
 
 .wasSaved, .saveBtn:active{
   transform: scale(.95);
+  color: whitesmoke;
+  border-radius: 15px;
   background-color: #490202;
   transition: all, .25s;
-  color: whitesmoke;
 }
 
 .inline{

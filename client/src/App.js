@@ -73,9 +73,9 @@ class App extends Component {
 
   save = (e) => {
     e.preventDefault();
-    const {title, author, description, img, bookid} = e.target.dataset;
+    const {title, author, description, img, bookid, link} = e.target.dataset;
     // console.log(title, author, description, img)
-    API.saveBook(title, author, description, img, bookid)
+    API.saveBook(title, author, description, img, bookid, link)
       .then(res => {
         console.log(res);
         this.getSavedBooks()

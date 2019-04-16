@@ -22,13 +22,14 @@ export default {
     return Axios.get("/api/books")
   },
 
-  saveBook(title, author, description, img_url, bookid) {
+  saveBook(title, author, description, img_url, bookid, link) {
     const sendObj = {
       title: title,
       author: author,
       description: description,
       img_url: img_url,
-      bookID: bookid
+      bookID: bookid,
+      link: link
     }
     return Axios.post("/api/books", sendObj)
   },

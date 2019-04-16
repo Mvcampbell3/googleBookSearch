@@ -35,6 +35,11 @@ const BookSchema = new Schema({
   read: {
     type: Boolean,
     default: false
+  },
+
+  link: {
+    type: String,
+    required: true
   }
 })
 

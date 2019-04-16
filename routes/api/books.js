@@ -17,7 +17,8 @@ router.post("/", (req, res) => {
     author: req.body.author,
     description: req.body.description,
     img_url: req.body.img_url,
-    bookID: req.body.bookID
+    bookID: req.body.bookID,
+    link: req.body.link
   });
 
   newBook.save()
