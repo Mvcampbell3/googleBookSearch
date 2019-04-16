@@ -83,3 +83,18 @@
   width: fit-content;
   margin: auto;
 }
+
+@media (max-width: 600px){
+  .resultFlex, .titleArea{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .titleArea{
+    text-align: center;
+  }
+
+  .bookAuthor{
+    text-indent: 0;
+  }
+}

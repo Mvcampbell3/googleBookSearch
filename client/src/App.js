@@ -109,11 +109,16 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
+  scrollTop = (e) => {
+    e.preventDefault();
+    window.scrollTo(0,0);
+  }
+
   render() {
     return (
       <Router>
 
-        <Header />
+        <Header scrollTop={this.scrollTop}/>
         <Switch>
           <Route exact path="/" render={props => (
             <div className="container">

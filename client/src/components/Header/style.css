@@ -2,23 +2,24 @@ header{
   width: 100%;
   padding: 10px;
   display: flex;
+  justify-content: space-between;
   align-items: baseline;
   background-color: rgb(73, 2, 2);
   color: white;
-  margin-bottom: 3em;
+  position: fixed;
+  top: 0;
 }
 
 header h1{
   font-family: 'Gravitas One', cursive;
-
 }
 
 nav ul{
   display: flex
 }
 
-nav ul li:nth-child(1){
-  margin: 0 10px 0 40px;
+nav ul li:nth-child(2){
+  margin: 0 2vw 0 2vw;
 }
 
 nav li a{
@@ -26,4 +27,13 @@ nav li a{
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  header{
+    flex-direction: column;
+  }
+  header h1{
+    font-size: 22px;
+  }
 }

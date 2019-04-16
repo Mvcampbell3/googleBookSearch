@@ -1,6 +1,5 @@
 .searchBar{
   margin-bottom: 2em;
-
 }
 
 form{
@@ -57,4 +56,42 @@ form{
 .searchBtn:hover{
   background-color: rgb(73, 2, 2);
   color: white
+}
+
+@media (max-width: 600px) {
+  .searchInput, .searchBtn{
+    display: block;
+  }
+
+  .searchInput{
+    width: 100%;
+    text-align: center;
+    padding: 3px;
+    margin-top: .5em;
+  }
+
+  .searchBtn{
+    padding: 10px;
+    margin-top: .5em;
+    width: fit-content;
+  }
+
+  .searchGroup{
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .buttonArea{
+    width: fit-content;
+    margin: auto;
+  }
+
+  .typeBtn{
+    font-size: 16px;
+  }
+
+  form{
+    padding: 10px 5px;
+  }
 }

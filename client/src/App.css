@@ -21,5 +21,11 @@ ul{
 
 .container{
   width: 90%;
-  margin: auto;
+  margin: 6em auto;
+}
+
+@media (max-width: 600px){
+  .container{
+    width: 98%;
+  }
 }
