@@ -10,6 +10,8 @@ import SaveResultArea from "./components/SaveResultArea"
 import './App.css';
 import API from "./utils/API"
 
+// import io  from "socket.io-client";
+
 class App extends Component {
   state = {
     searchTerm: "title",
@@ -22,13 +24,18 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getSavedBooks()
+    this.getSavedBooks();
+
+    // const socket = io();
+
+    // socket.on("connect", () => {
+    //   console.log("connected");
+    // })
   }
 
   getSavedBooks = () => {
     API.getSavedBooks()
       .then(res => {
-        console.log(res.data);
         const bookIDs = res.data.map(book => book.bookID)
         return this.setState({ saved: res.data , bookIDs: bookIDs})
       })
@@ -55,9 +62,6 @@ class App extends Component {
     if (this.state.searchTerm === "title") {
       API.searchTitle(this.state.title)
         .then(res => {
-          console.log(res.data)
-          const bookIDs = res.data.items.map(book => book.id);
-          console.log(bookIDs);
           this.setState({ searchResult: res.data, searched: true })
         })
         .catch(err => console.log(err));
@@ -74,10 +78,8 @@ class App extends Component {
   save = (e) => {
     e.preventDefault();
     const {title, author, description, img, bookid, link} = e.target.dataset;
-    // console.log(title, author, description, img)
     API.saveBook(title, author, description, img, bookid, link)
       .then(res => {
-        console.log(res);
         this.getSavedBooks()
       })
       .catch(err => console.log(err));
@@ -86,12 +88,9 @@ class App extends Component {
   changeRead = (e) => {
     e.preventDefault();
     const {read, id} = e.target.dataset;
-    console.log(read, !read, id)
-    console.log(typeof read)
     const newRead = read ==="true"? false: true;
     API.changeRead(id, newRead)
       .then(res => {
-        console.log(res);
         this.getSavedBooks();
 
       })
@@ -103,7 +102,6 @@ class App extends Component {
     const id = e.target.dataset.id;
     API.deleteBook(id)
       .then(res => {
-        console.log(res);
         this.getSavedBooks()
       })
       .catch(err => console.log(err));
@@ -115,6 +113,8 @@ class App extends Component {
   }
 
   render() {
+
+    
     return (
       <Router>
 

@@ -6,7 +6,6 @@ const authorLimit = "40";
 
 export default {
   searchTitle(title) {
-    console.log(title.split(" ").join("+"));
     const plusTitle = title.split(" ").join("+");
     return Axios.get(`https://www.googleapis.com/books/v1/volumes?q=${plusTitle}&maxResults=${titleLimit}&key=${key}`)
   },

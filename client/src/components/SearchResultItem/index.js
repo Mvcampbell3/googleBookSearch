@@ -5,7 +5,7 @@ const SearchResultItem = (props) => {
   const { title, authors, description, infoLink } = props.book.volumeInfo
   const backup = "https://via.placeholder.com/128x231?text=Missing+Img+Url";
   const imgThumb = props.book.volumeInfo.imageLinks !== undefined ? props.book.volumeInfo.imageLinks.thumbnail : backup;
-  const realAuthors = authors ? authors.toString().split(",").join(", ") : "Not Listed";
+  const realAuthors = authors ? authors.join(", ") : "Not Listed";
   
   return (
     <div className="searchResult">
