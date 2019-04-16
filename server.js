@@ -15,7 +15,11 @@ app.use(bodyParser.json());
 
 const books = require("./routes/api/books")
 
-mongoose.connect("mongodb://localhost/googlebooks", {useNewUrlParser : true})
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"))
+}
+
+mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/googlebooks", {useNewUrlParser : true})
   .then(() => console.log("Connected to Mongodb"))
   .catch(err => console.log(err));
 
