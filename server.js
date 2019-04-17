@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === "production") {
   })
 }
 
-mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/googlebooks", {useNewUrlParser : true})
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {useNewUrlParser : true})
   .then(() => console.log("Connected to Mongodb"))
   .catch(err => console.log(err));
 
