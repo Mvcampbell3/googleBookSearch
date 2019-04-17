@@ -26,11 +26,13 @@ mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/googlebooks", {
 
 
 // Routes
-app.use("/api/books", books)
+app.use("/api/books", books);
 
-app.get("/", (req, res) => {
+app.get("*", (req,res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"))
 })
+
+
 
 const PORT = process.env.PORT || 5000;
 
